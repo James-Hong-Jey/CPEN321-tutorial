@@ -14,12 +14,12 @@ services:
       context: .
       dockerfile: dockerfile
       args:
-        - PORT=${PORT}
+        - "PORT=${PORT}"
     restart: always
     container_name: CPEN321_app
     environment:
       - DB_URI=${DB_URI}
-      - PORT=${PORT}
+      - "PORT=${PORT}"
     ports:
       - "${PORT}:${PORT}"
     depends_on:
