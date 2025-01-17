@@ -27,8 +27,8 @@ jobs:
           script: |
             cd /home/ubuntu/CPEN321-tutorial
             cat > .env <<EOF
-            PORT=#{{ secrets.PROD_PORT }}
-            DB_URI=#{{ secrets.PROD_DB_URI }}
+            PORT=${{ secrets.PROD_PORT }}
+            DB_URI=${{ secrets.PROD_DB_URI }}
             EOF
             chmod 600 .env
 
