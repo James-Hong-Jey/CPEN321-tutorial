@@ -26,6 +26,8 @@ jobs:
           key: ${{ secrets.EC2_KEY}}
           script: |
             cd /home/ubuntu/CPEN321-tutorial
+            sudo rm -rf node_modules
+            npm install
             cat > .env <<EOF
             PORT=${{ secrets.PROD_PORT }}
             DB_URI=${{ secrets.PROD_DB_URI }}
