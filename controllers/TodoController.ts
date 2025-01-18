@@ -33,25 +33,8 @@ export class TodoController {
     }
 
     async getIP(req: Request, res: Response, next: NextFunction) {
-        const networkInterfaces = os.networkInterfaces();
-
-        // To extract the IP address (you may want to filter by 'eth0', 'wlan0', or another network interface)
-        for (const interfaceName in networkInterfaces) {
-            const interfaces = networkInterfaces[interfaceName];
-            if (!interfaces) {
-                continue;
-            }
-
-            for (const iface of interfaces) {
-                // Check if it's an IPv4 address (not IPv6)
-                if (iface.family === 'IPv4' && !iface.internal) {
-                    console.log(`IP Address of ${interfaceName}: ${iface.address}`);
-                }
-            }
-        }
-        const wifiInterfaces = networkInterfaces["Wi-Fi"];
-        const wifiAddress = wifiInterfaces && wifiInterfaces[1] ? wifiInterfaces[1].address : "Not Available";
-        res.status(200).send(`Your IP is: ${wifiAddress}`);
+        var ip = require("ip");
+        res.status(200).send(`Your IP is: ${ip.address()}`);
     }
 
     async getServerLocalTime(req: Request, res: Response, next: NextFunction) {
