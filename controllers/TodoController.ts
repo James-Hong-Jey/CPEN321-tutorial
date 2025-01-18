@@ -30,4 +30,24 @@ export class TodoController {
             res.status(200).send("Todo Item Deleted");
         }
     }
+
+    async getIP(req: Request, res: Response, next: NextFunction) {
+        res.status(200).send(`Your IP is: ${req.ip}`);
+    }
+
+    async getServerLocalTime(req: Request, res: Response, next: NextFunction) {
+        const now = new Date();
+        const offset = -now.getTimezoneOffset();
+        const hours = Math.floor(offset / 60);
+        const minutes = offset % 60;
+        const formattedOffset = `GMT${hours >= 0 ? "+" : ""}${hours
+            .toString()
+            .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+        const serverTime = now.toISOString().slice(11, 19) + ` ${formattedOffset}`;
+        res.status(200).send(`The server time is: ${serverTime}`);
+    }
+
+    async getFirstLastName(req: Request, res: Response, next: NextFunction) {
+        res.status(200).send(`James Hong`);
+    }
 }

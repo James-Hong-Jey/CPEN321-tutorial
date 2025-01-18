@@ -30,9 +30,27 @@ export const TodoRoutes = [
         ]
     },
     {
-        method: "delete",
+        method: "get",
         route: "/todolist/:id",
         action: controller.deleteTodos,
+        validation: []
+    },
+    {
+        method: "get",
+        route: "/ip",
+        action: controller.getIP,
+        validation: []
+    },    
+    {
+        method: "get",
+        route: "/serverlocaltime",
+        action: controller.getServerLocalTime,
+        validation: []
+    },    
+    {
+        method: "get",
+        route: "/firstlastname",
+        action: controller.getFirstLastName,
         validation: []
     },
 ]
